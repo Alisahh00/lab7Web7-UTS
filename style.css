@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Custom styling for login page */
+#loginForm {
+    transition: transform 0.3s ease-in-out;
+}
+
+#loginForm:hover {
+    transform: translateY(-5px);
+}
+
+/* Custom styling for dashboard menu buttons */
+.btn-outline-primary, .btn-outline-success, .btn-outline-secondary {
+    transition: all 0.3s ease;
+    border-width: 2px;
+}
+
+.btn-outline-primary:hover, .btn-outline-success:hover, .btn-outline-secondary:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure full height for login screen */
+.full-height-center {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
