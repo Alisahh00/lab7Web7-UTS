@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Pemesanan Buku</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login Pemesanan Buku</h2>
+        <input type="email" id="email" placeholder="Email">
+        <input type="password" id="password" placeholder="Password">
+        <button id="loginBtn">Login</button>
+
+        <div class="login-links">
+            <a href="#" id="forgotPasswordLink">Lupa Password?</a> |
+            <a href="#" id="registerLink">Daftar</a>
+        </div>
+    </div>
+
+    <!-- Modal Box untuk Daftar -->
+    <div id="registerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Form Pendaftaran</h3>
+            <input type="text" id="regName" placeholder="Nama Lengkap">
+            <input type="email" id="regEmail" placeholder="Email">
+            <input type="password" id="regPassword" placeholder="Password">
+            <button id="btnDaftar">Daftar</button>
+        </div>
+    </div>
+
+    <!-- Modal Box untuk Lupa Password -->
+    <div id="forgotModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Lupa Password</h3>
+            <input type="email" id="forgotEmail" placeholder="Masukkan Email Anda">
+            <button id="btnReset">Kirim</button>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+<script>
+    // Login
+    document.getElementById("loginBtn").onclick = function() {
+        const email = document.getElementById("email").value;
+        const pass = document.getElementById("password").value;
+
+        // 🔹 Ganti nama variabel jadi dataPengguna (sesuai file data.js kamu)
+        const user = dataPengguna.find(u => u.email === email && u.password === pass);
+        if (user) {
+            sessionStorage.setItem("loggedInUser", JSON.stringify(user));
+            window.location.href = "dashboard.html";
+        } else {
+            alert("Email atau password yang anda masukkan salah!");
+        }
+    };
+
+    // Modal Daftar
+    const regModal = document.getElementById("registerModal");
+    const forgotModal = document.getElementById("forgotModal");
+    const modals = document.getElementsByClassName("modal");
+
+    document.getElementById("registerLink").onclick = () => regModal.style.display = "block";
+    document.getElementById("forgotPasswordLink").onclick = () => forgotModal.style.display = "block";
+
+    Array.from(document.getElementsByClassName("close")).forEach(c => {
+        c.onclick = () => Array.from(modals).forEach(m => m.style.display = "none");
+    });
+
+    window.onclick = function(event) {
+        if (event.target.classList.contains("modal")) {
+            Array.from(modals).forEach(m => m.style.display = "none");
+        }
+    };
+</script>
+</body>
+</html>

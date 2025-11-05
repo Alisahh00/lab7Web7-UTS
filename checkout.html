@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Pesanan - Toko Buku Online</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="checkout">
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
+            <h2>🛒 Formulir Tambah Pesanan Baru</h2>
+            <a href="dashboard.html" class="btn btn-secondary">Kembali ke Dashboard</a>
+        </div>
+        
+        <form id="checkoutForm">
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5>Detail Buku yang Dipesan</h5>
+                </div>
+                <div class="card-body">
+                    <div id="orderItemsContainer">
+                        <div class="row g-2 mb-3 border p-2 rounded order-item">
+                            <div class="col-md-6">
+                                <label class="form-label">Nama Buku</label>
+                                <select class="form-select item-select" required>
+                                    <option value="" data-harga="0">--Pilihan Buku--</option>"
+                                    <select id="pilihanBuku" name="buku">
+                                    </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Harga Satuan</label>
+                                <input type="text" class="form-control item-harga-display" value="Rp 0" readonly>
+                                <input type="hidden" class="item-harga" value="0"> 
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label">Qty</label>
+                                <input type="number" class="form-control item-qty" value="1" min="1" required>
+                            </div>
+                            <div class="col-md-1 d-flex align-items-end">
+                                <button type="button" class="btn btn-danger btn-sm w-100 remove-item" style="height: 38px;">X</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="button" id="addItemBtn" class="btn btn-sm btn-outline-success mt-2">➕ Tambah Buku Lain</button>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5>Informasi Pengiriman</h5>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <label for="namaLengkap" class="form-label">Nama Lengkap Penerima</label>
+                        <input type="text" class="form-control" id="namaLengkap" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="alamatPengiriman" class="form-label">Alamat Pengiriman Lengkap</label>
+                        <textarea class="form-control" id="alamatPengiriman" rows="3" required></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg w-100 mb-5">✅ Tambah Pesanan Baru</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
